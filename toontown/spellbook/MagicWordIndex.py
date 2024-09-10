@@ -252,6 +252,7 @@ class MaxToon(MagicWord):
         from toontown.quest import Quests
         from toontown.suit import SuitDNA
         from toontown.coghq import CogDisguiseGlobals
+        from toontown.safezone.TreasureCollectionGlobals import treasureLaffBoostCollectionReq, safezones
 
         # TODO: Handle this better, like giving out all awards, set the quest tier, stuff like that.
         # This is mainly copied from Anesidora just so I can better work on things.
@@ -280,6 +281,8 @@ class MaxToon(MagicWord):
         toon.b_setCogParts([*CogDisguiseGlobals.PartsPerSuitBitmasks])
         toon.b_setCogTypes([SuitDNA.suitsPerDept - 1] * 4)
         toon.b_setCogLevels([ToontownGlobals.MaxCogSuitLevel] * 4)
+
+        toon.b_setCollectedTreasures([treasureLaffBoostCollectionReq] * len(safezones))
 
         return f"Successfully maxed {toon.getName()}!"
     

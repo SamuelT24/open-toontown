@@ -4136,6 +4136,23 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
     def d_toggleSleep(self):
         self.sendUpdate('toggleSleep', [])
 
+    def b_setCollectedTreasures(self, treasureList):
+        self.notify.debug("Updating collected treasures list.\nOld: %s\nNew: %s" % (self.collectedTreasures, treasureList))
+        self.setCollectedTreasures(treasureList)
+        self.d_setCollectedTreasures(treasureList)
+
+    def setCollectedTreasures(self, treasureList):
+        self.collectedTreasures = treasureList
+
+    def d_setCollectedTreasures(self, treasureList):
+        self.sendUpdate('setCollectedTreasures', [treasureList])
+
+    def getCollectedTreasures(self):
+        return self.collectedTreasures
+    
+    def d_treasureCollectMaxingFanfare(self):
+        self.sendUpdate('treasureCollectMaxingFanfare', [])
+
     @staticmethod
     def staticGetLogicalZoneChangeAllEvent():
         return 'DOLogicalChangeZone-all'

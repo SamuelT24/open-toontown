@@ -52,6 +52,7 @@ from toontown.toon import NPCToons
 from toontown.toonbase import ToontownGlobals
 from toontown.tutorial.TutorialManagerAI import TutorialManagerAI
 from toontown.uberdog.DistributedInGameNewsMgrAI import DistributedInGameNewsMgrAI
+from toontown.safezone.TreasureCollectionManagerAI import TreasureCollectionManagerAI
 import os
 
 
@@ -94,6 +95,7 @@ class ToontownAIRepository(ToontownInternalRepository):
         self.safeZoneManager = None
         self.magicWordManager = None
         self.partyManager = None
+        self.treasureCollectionMgr = None
         self.zoneTable = {}
         self.dnaStoreMap = {}
         self.dnaDataMap = {}
@@ -180,6 +182,9 @@ class ToontownAIRepository(ToontownInternalRepository):
 
         # Create our Cog suit manager...
         self.cogSuitMgr = CogSuitManagerAI(self)
+
+        # Create our treasure collection manager...
+        self.treasureCollectionMgr = TreasureCollectionManagerAI(self)
 
     def createGlobals(self):
         """

@@ -52,6 +52,7 @@ from toontown.toon import ToonDNA
 from . import DistributedToon
 from . import Toon
 from . import LaffMeter
+from . import TreasureTracker
 from toontown.quest import QuestMap
 from toontown.toon.DistributedNPCToonBase import DistributedNPCToonBase
 WantNewsPage = base.config.GetBool('want-news-page', ToontownGlobals.DefaultWantNewsPageSetting)
@@ -269,6 +270,8 @@ class LocalToon(DistributedToon.DistributedToon, LocalAvatar.LocalAvatar):
                 del self.kartPage
         if base.wantNametags:
             self.nametag.unmanage(base.marginManager)
+        self.treasureTracker.unload()
+        del self.treasureTracker
         taskMgr.removeTasksMatching('*ioorrd234*')
         self.ignoreAll()
         DistributedToon.DistributedToon.disable(self)
@@ -375,6 +378,9 @@ class LocalToon(DistributedToon.DistributedToon, LocalAvatar.LocalAvatar):
         else:
             self.laffMeter.setPos(-1.2, 0.0, -0.87)
         self.laffMeter.stop()
+        self.treasureTracker = TreasureTracker.TreasureTracker()
+        self.treasureTracker.load()
+        self.treasureTracker.hideAll()
         self.questMap = QuestMap.QuestMap(self)
         self.questMap.stop()
         if not base.cr.isPaid():

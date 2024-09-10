@@ -58,6 +58,7 @@ if base.wantKarts:
     from toontown.racing.KartDNA import *
 if (__debug__):
     import pdb
+from toontown.battle import Fanfare
 
 class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, DistributedSmoothNode.DistributedSmoothNode, DelayDeletable):
     notify = DirectNotifyGlobal.directNotify.newCategory('DistributedToon')
@@ -2592,3 +2593,16 @@ class DistributedToon(DistributedPlayer.DistributedPlayer, Toon.Toon, Distribute
 
     def toggleSleep(self):
         base.localAvatar.noSleep = not base.localAvatar.noSleep
+
+    def setCollectedTreasures(self, treasureList):
+        self.collectedTreasures = treasureList
+        if self.isLocal():
+            messenger.send("localToonUpdatedTreasures", [self.collectedTreasures])
+
+    def getCollectedTreasures(self):
+        return self.collectedTreasures
+    
+    def treasureCollectMaxingFanfare(self):
+        self.notify.debug("Treasure collecting maxing fanfare started on avatar %d." % (self.getDoId()))
+        # Make a fanfare 2 seconds after this is broadcasted.
+        Fanfare.makeFanfare(2, self)[0].start()

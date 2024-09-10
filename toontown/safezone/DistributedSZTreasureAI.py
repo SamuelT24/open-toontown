@@ -8,7 +8,8 @@ class DistributedSZTreasureAI(DistributedTreasureAI.DistributedTreasureAI):
         self.healAmount = treasurePlanner.healAmount
 
     def validAvatar(self, av):
-        return av.hp >= -1 and av.hp < av.maxHp
+        # Allows the avatar to pick up the treasure at full hp if they still need it for their treasure collection laff boost.
+        return (av.hp >= -1 and av.hp < av.maxHp) or self.air.treasureCollectionMgr.validateAvatar(av, self.zoneId)
 
     def d_setGrab(self, avId):
         DistributedTreasureAI.DistributedTreasureAI.d_setGrab(self, avId)

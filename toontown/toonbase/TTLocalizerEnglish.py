@@ -77,6 +77,9 @@ lMinniesMelodyland = "Minnie's Melodyland"
 lToontownCentral = 'Toontown Central'
 lToonHQ = 'Toon HQ'
 lSellbotHQ = 'Sellbot HQ'
+lCashbotHQ = 'Cashbot HQ'
+lLawbotHQ = 'Lawbot HQ'
+lBossbotHQ = 'Bossbot HQ'
 lGoofySpeedway = 'Goofy Speedway'
 lOutdoorZone = "Chip 'n Dale's Acorn Acres"
 lGolfZone = "Chip 'n Dale's MiniGolf"
@@ -9760,3 +9763,19 @@ InteractivePropTrackBonusTerms = {0: 'Super Toon-Up!',
  5: 'Super Squirt!',
  6: ''}
 PlayingCardUnknown = 'Card Name is unknown'
+TreasureCollectionLaffBoost = "Wow! You collected %d treasures in %s. That deserves a laff boost!"
+TreasureCollectionAllHoodsMaxed = "Congratulations!! You've collected %d treasures in all playgrounds."
+HoodIdToName = {2000: lToontownCentral,
+                1000: lDonaldsDock,
+                5000: lDaisyGardens,
+                4000: lMinniesMelodyland,
+                3000: lTheBrrrgh,
+                6000: "Acorn Acres",
+                9000: lDonaldsDreamland,
+                8000: lGoofySpeedway,
+                17000: lGolfZone,
+                11000: lSellbotHQ,
+                12000: lCashbotHQ,
+                13000: lLawbotHQ,
+                10000: lBossbotHQ}
+TreasureTrackerTitle = "Treasure Tracker"

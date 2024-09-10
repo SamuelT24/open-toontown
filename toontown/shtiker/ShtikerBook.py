@@ -339,12 +339,15 @@ class ShtikerBook(DirectFrame, StateData.StateData):
         if self.__isOpen:
             self.bookOpenButton.hide()
             self.bookCloseButton.show()
+            messenger.send("hideTreasureTracker")
         elif self.__shown and not self.__obscured:
             self.bookOpenButton.show()
             self.bookCloseButton.hide()
+            messenger.send("showTreasureTracker")
         else:
             self.bookOpenButton.hide()
             self.bookCloseButton.hide()
+            messenger.send("hideTreasureTracker")
 
     def shouldBookButtonBeHidden(self):
         result = False

@@ -108,6 +108,7 @@ class TreasurePlannerAI(DirectObject.DirectObject):
                         self.callback(avId)
                     treasure.d_setGrab(avId)
                     self.deleteTreasureSoon(treasure)
+                    simbase.air.treasureCollectionMgr.updateCollectionList(av, self.zoneId) # Update their collection on the DB.
                 else:
                     treasure.d_setReject()
         return
